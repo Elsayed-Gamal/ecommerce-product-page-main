@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | E-commerce product page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/css/main.css" />
+    <script defer src="src/js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="left">
+          <div class="logo">
+            <img src="src/images/logo.svg" alt="Sneakers Logo" />
+          </div>
+          <ul class="nav-items">
+            <li class="nav-item"><a href="#">Collections</a></li>
+            <li class="nav-item"><a href="#">Men</a></li>
+            <li class="nav-item"><a href="#">Women</a></li>
+            <li class="nav-item"><a href="#">About</a></li>
+            <li class="nav-item"><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="cart">
+            <img src="src/images/icon-cart.svg" alt="Cart" />
+          </div>
+          <div class="profile">
+            <img src="src/images/image-avatar.png" alt="Profile Image" />
+          </div>
+        </div>
+      </nav>
+      <div class="line"></div>
+      <div class="product">
+        <div class="product-images">
+          <div class="product-image-large">
+            <img
+              src="src/images/image-product-1.jpg"
+              alt="Product large image"
+            />
+          </div>
+          <div class="product-images-small">
+            <div class="product-image-small active">
+              <img
+                src="src/images/image-product-1-thumbnail.jpg"
+                alt="Product small image"
+              />
+            </div>
+            <div class="product-image-small">
+              <img
+                src="src/images/image-product-2-thumbnail.jpg"
+                alt="Product small image"
+              />
+            </div>
+            <div class="product-image-small">
+              <img
+                src="src/images/image-product-3-thumbnail.jpg"
+                alt="Product small image"
+              />
+            </div>
+            <div class="product-image-small">
+              <img
+                src="src/images/image-product-4-thumbnail.jpg"
+                alt="Product small image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Sneaker Company</h3>
+          <h2>Fall Limited Edition Sneakers</h2>
+          <p>
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+          </p>
+          <span class="price">$125.00</span><span class="discount">50%</span
+          ><br />
+          <span class="price-before">$250.00</span>
+          <br />
+          <div class="input">
+            <img src="src/images/icon-minus.svg" alt="Minus" class="minus" />
+            <input type="number" value="0" />
+            <img src="src/images/icon-plus.svg" alt="Plus" class="plus" />
+          </div>
+          <button>
+            <img src="src/images/Shapecart-button.svg" alt="Cart" />Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+  Sneaker Company
+
+  Fall Limited Edition Sneakers
+
+  These low-profile sneakers are your perfect casual wear companion. Featuring a 
+  durable rubber outer sole, they’ll withstand everything the weather can offer.
+
+  
+  
+  
+
+  0
+  Add to cart -->
+
+    <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  </body>
+</html>
