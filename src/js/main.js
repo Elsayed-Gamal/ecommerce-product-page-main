@@ -62,14 +62,20 @@ const changeLightboxImage = function (e) {
       });
   }
 
-  if (e.target.classList.contains('next-btn')) {
+  if (
+    e.target.classList.contains('next-btn') ||
+    e.target === document.querySelector('.light-box .next-btn img')
+  ) {
     goToImage(
       currentImage + 1,
       document.querySelectorAll('.light-box .product-image-small')
     );
   }
 
-  if (e.target.classList.contains('prev-btn')) {
+  if (
+    e.target.classList.contains('prev-btn') ||
+    e.target === document.querySelector('.light-box .prev-btn img')
+  ) {
     goToImage(
       currentImage - 1,
       document.querySelectorAll('.light-box .product-image-small')
