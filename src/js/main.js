@@ -15,6 +15,8 @@ const handleClicks = function (e) {
   changeLightboxImage(e);
 
   closeLightbox(e);
+
+  addRemoveStock(e);
 };
 
 // Change large image when click on thumbnail
@@ -143,5 +145,31 @@ const goToImage = function (n, images) {
     );
 };
 
+// Add or remove stock
+const addRemoveStock = function (e) {
+  if (e.target === document.querySelector('.product-info .input .plus')) {
+    document.querySelector('.product-info input').value =
+      parseInt(document.querySelector('.product-info input').value) + 1;
+  }
+
+  if (
+    e.target === document.querySelector('.product-info .input .minus') &&
+    parseInt(document.querySelector('.product-info input').value) > 1
+  ) {
+    document.querySelector('.product-info input').value =
+      parseInt(document.querySelector('.product-info input').value) - 1;
+  }
+};
+
+// Check if input value less than 1
+const checkInputValue = function () {
+  if (this.value < 1) {
+    this.value = 1;
+  }
+};
+
 // Add event listeners
 document.addEventListener('click', handleClicks);
+document
+  .querySelector('.product-info input')
+  .addEventListener('change', checkInputValue);
