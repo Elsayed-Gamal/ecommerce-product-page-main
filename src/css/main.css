@@ -15,6 +15,7 @@ body {
 .container {
   width: 1110px;
   margin: 28px auto;
+  margin-bottom: 132px;
 }
 
 .navbar {
@@ -305,20 +306,68 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
 }
 
 .light-box .product-image-large {
   width: 550px;
   height: 550px;
   cursor: auto;
-  margin-top: 130px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: visible;
+}
+
+.light-box .product-image-large img {
+  border-radius: 15px;
+}
+
+.light-box .prev-btn,
+.light-box .next-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+}
+
+.light-box .prev-btn {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.light-box .next-btn {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.light-box .prev-btn img,
+.light-box .next-btn img {
+  width: auto;
+  height: auto;
+}
+
+.close-lightbox {
+  width: 550px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-lightbox img {
+  cursor: pointer;
+  margin-bottom: 24px;
 }
 
 /* .attribution {
