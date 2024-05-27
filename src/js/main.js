@@ -106,14 +106,14 @@ const showLightbox = function (e) {
 
     const nextBtn = document.createElement('div');
     nextBtn.classList.add('next-btn');
-    nextBtn.innerHTML = `<img src="/src/images/icon-next.svg" alt="Next">`;
+    nextBtn.innerHTML = `<img src="src/images/icon-next.svg" alt="Next">`;
     document
       .querySelector('.light-box .product-image-large')
       .insertAdjacentElement('beforeend', nextBtn);
 
     const prevBtn = document.createElement('div');
     prevBtn.classList.add('prev-btn');
-    prevBtn.innerHTML = `<img src="/src/images/icon-previous.svg" alt="Previous">`;
+    prevBtn.innerHTML = `<img src="src/images/icon-previous.svg" alt="Previous">`;
     document
       .querySelector('.light-box .product-image-large')
       .insertAdjacentElement('beforeend', prevBtn);
