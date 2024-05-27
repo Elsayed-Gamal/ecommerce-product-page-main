@@ -80,6 +80,49 @@ body {
 
 .cart {
   cursor: pointer;
+  position: relative;
+}
+
+.cart .cart-box {
+  width: 360px;
+  height: 256px;
+  box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.5);
+  position: absolute;
+  top: 52px;
+  left: -240px;
+  background-color: #fff;
+  cursor: auto;
+  border-radius: 10px;
+  opacity: 1;
+  transition: all 0.4s ease-out;
+}
+
+.cart .cart-box.hidden {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.cart h3 {
+  height: auto;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 24px;
+  margin-bottom: 27px;
+  color: #1d2026;
+}
+
+.cart .empty-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #69707d;
+  text-align: center;
+  position: relative;
+}
+
+.cart .line {
+  margin: 0;
+  margin-bottom: 77px;
 }
 
 .profile {

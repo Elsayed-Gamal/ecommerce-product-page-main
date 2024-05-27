@@ -3,6 +3,8 @@
 const smallImages = document.querySelector('.product .product-images-small');
 const largeImage = document.querySelector('.product .product-image-large');
 
+const cartItems = JSON.parse(localStorage.getItem('Cart Items')) || [];
+
 let currentImage = 0;
 
 // handle clicks function
@@ -17,6 +19,10 @@ const handleClicks = function (e) {
   closeLightbox(e);
 
   addRemoveStock(e);
+
+  showHideCart(e);
+
+  addToCart(e);
 };
 
 // Change large image when click on thumbnail
@@ -167,6 +173,58 @@ const checkInputValue = function () {
     this.value = 1;
   }
 };
+
+// show and hide cart
+const showHideCart = function (e) {
+  if (
+    e.target === document.querySelector('.cart img') ||
+    e.target === document.querySelector('.cart')
+  ) {
+    document.querySelector('.cart .cart-box').classList.toggle('hidden');
+  }
+
+  if (
+    e.target !== document.querySelector('.cart-box') &&
+    e.target !== document.querySelector('.cart-box h3') &&
+    e.target !== document.querySelector('.cart-box .line') &&
+    e.target !== document.querySelector('.cart-box h4') &&
+    e.target !== document.querySelector('.cart') &&
+    e.target !== document.querySelector('.cart img')
+  ) {
+    document.querySelector('.cart .cart-box').classList.add('hidden');
+  }
+};
+
+// Add items to the cart
+const addToCart = function (e) {
+  if (e.target.closest('.add-to-cart')) {
+    const quantity = parseInt(document.querySelector('.input input').value);
+    cartItems.pop();
+    cartItems.push({
+      name: 'Fall Limited Edition Sneakers',
+      quantity,
+    });
+
+    localStorage.setItem('Cart Items', JSON.stringify(cartItems));
+
+    updateCartUI();
+  }
+};
+
+// Updat cart UI
+
+const updateCartUI = function () {
+  const cartBox = document.querySelector('.cart .cart-box');
+  if (cartItems.length > 0) {
+    const itemName = cartItems[0]?.name;
+    const quantity = cartItems[0]?.quantity;
+  } else {
+    const markup = `<h4 class='empty-text'>Your cart is empty.</h4>`;
+    // cartBox.insertAdjacentHTML('beforeend', markup);
+  }
+};
+
+updateCartUI();
 
 // Add event listeners
 document.addEventListener('click', handleClicks);
