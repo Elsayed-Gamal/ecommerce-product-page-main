@@ -9,20 +9,14 @@ let currentImage = 0;
 
 // handle clicks function
 const handleClicks = function (e) {
-  console.log(e.target);
   changeImage(e);
-
   showLightbox(e);
-
   changeLightboxImage(e);
-
   closeLightbox(e);
-
   addRemoveStock(e);
-
   showHideCart(e);
-
   addToCart(e);
+  deleteItem(e);
 };
 
 // Change large image when click on thumbnail
@@ -183,14 +177,7 @@ const showHideCart = function (e) {
     document.querySelector('.cart .cart-box').classList.toggle('hidden');
   }
 
-  if (
-    e.target !== document.querySelector('.cart-box') &&
-    e.target !== document.querySelector('.cart-box h3') &&
-    e.target !== document.querySelector('.cart-box .line') &&
-    e.target !== document.querySelector('.cart-box h4') &&
-    e.target !== document.querySelector('.cart') &&
-    e.target !== document.querySelector('.cart img')
-  ) {
+  if (!e.target.closest('.cart')) {
     document.querySelector('.cart .cart-box').classList.add('hidden');
   }
 };
@@ -211,16 +198,54 @@ const addToCart = function (e) {
   }
 };
 
-// Updat cart UI
+// Delete item from cart
+const deleteItem = function (e) {
+  if (e.target.closest('.cart-box .item .delete')) {
+    cartItems.pop();
+    localStorage.setItem('Cart Items', JSON.stringify(cartItems));
+    updateCartUI();
+  }
+};
 
+// Updat cart UI
 const updateCartUI = function () {
   const cartBox = document.querySelector('.cart .cart-box');
   if (cartItems.length > 0) {
     const itemName = cartItems[0]?.name;
     const quantity = cartItems[0]?.quantity;
+    const markup = `<h3>Cart</h3>
+                    <div class="line"></div>
+                    <div class="item">
+                      <div class="img">
+                        <img
+                          src="src/images/image-product-1-thumbnail.jpg"
+                          alt="Product"
+                        />
+                      </div>
+                      <div class="info">
+                        <h4>${itemName}</h4>
+                        <span class="qunatity">$125.00 x ${quantity}</span
+                        ><span class="price">$${125 * quantity}.00</span>
+                      </div>
+                      <div class="delete">
+                        <img src="src/images/icon-delete.svg" alt="Delete" />
+                      </div>
+                    </div>
+                    <button class="checkout">Checkout</button>`;
+
+    document.querySelector('.cart .cart-quantity').textContent = quantity;
+    document.querySelector('.cart .cart-quantity').classList.remove('hidden');
+    cartBox.innerHTML = '';
+    cartBox.insertAdjacentHTML('beforeend', markup);
   } else {
-    const markup = `<h4 class='empty-text'>Your cart is empty.</h4>`;
-    // cartBox.insertAdjacentHTML('beforeend', markup);
+    const markup = `<h3>Cart</h3>
+                    <div class="line"></div>
+                    <h4 class='empty-text'>Your cart is empty.</h4>
+    `;
+    document.querySelector('.cart .cart-quantity').textContent = '';
+    document.querySelector('.cart .cart-quantity').classList.add('hidden');
+    cartBox.innerHTML = '';
+    cartBox.insertAdjacentHTML('beforeend', markup);
   }
 };
 
