@@ -388,6 +388,8 @@ body {
   font-size: 16px;
   font-weight: bold;
   border-radius: 10px;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .product-info input::-webkit-inner-spin-button {
