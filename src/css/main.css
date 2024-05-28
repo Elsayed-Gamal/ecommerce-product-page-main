@@ -20,16 +20,20 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 2;
+  opacity: 1;
+  transition: all 0.3s ease-out;
 }
 
 .overlay.hidden {
-  display: none;
+  z-index: -1;
+  opacity: 0;
 }
 
 .container {
   max-width: 1110px;
   margin: 28px auto;
   margin-bottom: 132px;
+  z-index: -1;
 }
 
 .navbar {
@@ -57,6 +61,7 @@ body {
   height: 100%;
   background-color: #fff;
   z-index: 2;
+  transition: all 0.3s ease-out;
 }
 
 .mobile-nav .close {
@@ -78,7 +83,8 @@ body {
 }
 
 .mobile-nav.hidden {
-  display: none;
+  opacity: 0;
+  transform: translateX(-250px);
 }
 
 .mobile-nav .nav-items-mobile .nav-item:hover::after {
