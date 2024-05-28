@@ -6,10 +6,24 @@
 
 html {
   position: relative;
+  /* height: 100%; */
 }
 
 body {
   font-family: 'Kumbh Sans', sans-serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
+.overlay.hidden {
+  display: none;
 }
 
 .container {
@@ -29,6 +43,48 @@ body {
   gap: 56.5px;
 }
 
+.mobile-nav-icon {
+  display: none;
+  width: 16px;
+  height: 15px;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.mobile-nav .close {
+  margin-left: 25px;
+  margin-top: 25px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.mobile-nav .nav-items-mobile {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1d2026;
+  margin-left: 25px;
+  margin-top: 54px;
+}
+
+.mobile-nav.hidden {
+  display: none;
+}
+
+.mobile-nav .nav-items-mobile .nav-item:hover::after {
+  bottom: -5px;
+}
+
 .logo {
   width: 137.5px;
   height: 20px;
@@ -39,7 +95,8 @@ body {
   height: 100%;
 }
 
-.nav-items {
+.nav-items,
+.nav-items-mobile {
   list-style: none;
   display: flex;
   align-items: center;
@@ -67,7 +124,8 @@ body {
   background-color: #ff7e1b;
 }
 
-.nav-items a {
+.nav-items a,
+.nav-items-mobile a {
   text-decoration: none;
   color: inherit;
 }
@@ -95,6 +153,7 @@ body {
   position: absolute;
   top: -6px;
   right: -6.2px;
+  user-select: none;
 }
 
 .cart .cart-quantity.hidden {
@@ -114,6 +173,7 @@ body {
   opacity: 1;
   overflow: hidden;
   transition: all 0.4s ease-out;
+  z-index: 1;
 }
 
 .cart .cart-box.hidden {
@@ -253,6 +313,14 @@ body {
 .product-image-large img {
   width: 100%;
   height: 100%;
+}
+
+.product .product-image-large .next-btn {
+  display: none;
+}
+
+.product .product-image-large .prev-btn {
+  display: none;
 }
 
 .product-images-small {
@@ -489,6 +557,11 @@ body {
 }
 
 @media (max-width: 1025px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
   .product {
     flex-direction: column;
     gap: 80px;
@@ -513,8 +586,155 @@ body {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 775px) {
   /* Hide navigation */
+  .left {
+    align-items: center;
+    gap: 30px;
+  }
+
+  .mobile-nav-icon {
+    display: block;
+  }
+
+  .nav-items {
+    display: none;
+  }
+
+  .product-image-large {
+    position: relative;
+    cursor: default;
+  }
+
+  .product .product-image-large .next-btn,
+  .product .product-image-large .prev-btn {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .product .product-image-large .next-btn {
+    right: 16px;
+    transform: translateY(-50%);
+  }
+
+  .product .product-image-large .prev-btn {
+    left: 16px;
+    transform: translateY(-50%);
+  }
+
+  .product .product-image-large .next-btn img,
+  .product .product-image-large .prev-btn img {
+    width: auto;
+    height: auto;
+  }
+
+  .product-images-small {
+    display: none;
+  }
+}
+
+@media (max-width: 601px) {
+  .product-info .input {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 530px) {
+  .product-image-large {
+    max-width: 375px;
+    max-height: 300px;
+    border-radius: 0;
+  }
+
+  .product .product-image-large .next-btn,
+  .product .product-image-large .prev-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 485px) {
+  .container {
+    margin-top: 19px;
+  }
+
+  .navbar {
+    height: 24px;
+    margin-bottom: 25px;
+  }
+
+  .navbar .right {
+    gap: 22px;
+  }
+
+  .cart {
+    margin-top: 5px;
+  }
+
+  .profile {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart .cart-box {
+    left: -280px;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .product-info .input {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .product-info .input input {
+    width: 100%;
+  }
+
+  .product-info button {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .left {
+    gap: 16px;
+  }
+
+  .product-info h3 {
+    font-size: 12px;
+  }
+
+  .product-info p {
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .product-info h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+@media (max-width: 350px) {
+  .product-image-large {
+    width: 280px;
+    height: auto;
+  }
 }
 
 /* .attribution {

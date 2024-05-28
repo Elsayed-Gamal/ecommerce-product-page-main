@@ -25,9 +25,25 @@
     <script defer src="src/js/main.js"></script>
   </head>
   <body>
+    <div class="overlay hidden"></div>
     <div class="container">
       <nav class="navbar">
         <div class="left">
+          <div class="mobile-nav-icon">
+            <img src="src/images/icon-menu.svg" alt="Menu" />
+          </div>
+          <div class="mobile-nav hidden">
+            <div class="close">
+              <img src="src/images/icon-close.svg" alt="Close" />
+            </div>
+            <ul class="nav-items-mobile">
+              <li class="nav-item"><a href="#">Collections</a></li>
+              <li class="nav-item"><a href="#">Men</a></li>
+              <li class="nav-item"><a href="#">Women</a></li>
+              <li class="nav-item"><a href="#">About</a></li>
+              <li class="nav-item"><a href="#">Contact</a></li>
+            </ul>
+          </div>
           <div class="logo">
             <img src="src/images/logo.svg" alt="Sneakers Logo" />
           </div>
@@ -58,6 +74,12 @@
               src="src/images/image-product-1.jpg"
               alt="Product large image"
             />
+            <div class="next-btn">
+              <img src="src/images/icon-next.svg" alt="Next" />
+            </div>
+            <div class="prev-btn">
+              <img src="src/images/icon-previous.svg" alt="Previous" />
+            </div>
           </div>
           <div class="product-images-small">
             <div class="product-image-small active">

@@ -17,9 +17,10 @@ const handleClicks = function (e) {
   showHideCart(e);
   addToCart(e);
   deleteItem(e);
+  showHideMobileNAv(e);
 };
 
-// Change large image when click on thumbnail
+// Change large image
 const changeImage = function (e) {
   if (
     e.target.classList.contains('product-image-small') &&
@@ -37,6 +38,22 @@ const changeImage = function (e) {
           currentImage = i;
         }
       });
+  }
+
+  if (e.target.closest('.product .next-btn')) {
+    goToImage(
+      currentImage + 1,
+      document.querySelectorAll('.product .product-image-small'),
+      document.querySelector('.product .product-image-large img')
+    );
+  }
+
+  if (e.target.closest('.product .prev-btn')) {
+    goToImage(
+      currentImage - 1,
+      document.querySelectorAll('.product .product-image-small'),
+      document.querySelector('.product .product-image-large img')
+    );
   }
 };
 
@@ -64,30 +81,26 @@ const changeLightboxImage = function (e) {
       });
   }
 
-  if (
-    e.target.classList.contains('next-btn') ||
-    e.target === document.querySelector('.light-box .next-btn img')
-  ) {
+  if (e.target.closest('.light-box .next-btn')) {
     goToImage(
       currentImage + 1,
-      document.querySelectorAll('.light-box .product-image-small')
+      document.querySelectorAll('.light-box .product-image-small'),
+      document.querySelector('.light-box .product-image-large img')
     );
   }
 
-  if (
-    e.target.classList.contains('prev-btn') ||
-    e.target === document.querySelector('.light-box .prev-btn img')
-  ) {
+  if (e.target.closest('.light-box .prev-btn')) {
     goToImage(
       currentImage - 1,
-      document.querySelectorAll('.light-box .product-image-small')
+      document.querySelectorAll('.light-box .product-image-small'),
+      document.querySelector('.light-box .product-image-large img')
     );
   }
 };
 
 // Show lightbox when click on large image
 const showLightbox = function (e) {
-  if (e.target === largeImage.querySelector('img')) {
+  if (e.target === largeImage.querySelector('img') && window.innerWidth > 775) {
     const elementClone = document
       .querySelector('.product-images')
       .cloneNode(true);
@@ -131,18 +144,17 @@ const closeLightbox = function (e) {
 };
 
 // create goToImage function
-const goToImage = function (n, images) {
+const goToImage = function (n, images, largeImage) {
   images[currentImage].classList.remove('active');
 
   currentImage = (n + images.length) % images.length;
 
   images[currentImage].classList.add('active');
-  document
-    .querySelector('.light-box .product-image-large img')
-    .setAttribute(
-      'src',
-      images[currentImage].querySelector('img').getAttribute('data-src')
-    );
+  document;
+  largeImage.setAttribute(
+    'src',
+    images[currentImage].querySelector('img').getAttribute('data-src')
+  );
 };
 
 // Add or remove stock
@@ -172,7 +184,8 @@ const checkInputValue = function () {
 const showHideCart = function (e) {
   if (
     e.target === document.querySelector('.cart img') ||
-    e.target === document.querySelector('.cart')
+    e.target === document.querySelector('.cart') ||
+    e.target === document.querySelector('.cart .cart-quantity')
   ) {
     document.querySelector('.cart .cart-box').classList.toggle('hidden');
   }
@@ -250,6 +263,22 @@ const updateCartUI = function () {
 };
 
 updateCartUI();
+
+// Show and hide mobile nav
+const showHideMobileNAv = function (e) {
+  if (e.target.closest('.mobile-nav-icon')) {
+    document.querySelector('.overlay').classList.remove('hidden');
+    document.querySelector('.mobile-nav').classList.remove('hidden');
+  }
+
+  if (
+    e.target === document.querySelector('.overlay') ||
+    e.target.closest('.mobile-nav .close')
+  ) {
+    document.querySelector('.overlay').classList.add('hidden');
+    document.querySelector('.mobile-nav').classList.add('hidden');
+  }
+};
 
 // Add event listeners
 document.addEventListener('click', handleClicks);
